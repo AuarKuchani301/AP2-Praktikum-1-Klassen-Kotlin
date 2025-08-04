@@ -1,0 +1,118 @@
+ AlgorithmenundProgrammierung2
+ Praktikum1-Klassen
+Die Klasse “Course”
+ In dieser Aufgabe soll ein Kurs als Klasse festgelegt werden.
+ 1.1 Basisstruktur
+
+ Definieren Sie eine Klasse namens Course. Die Klasse soll den Namen name als unveränderliche
+ Eigenschaft speichern.
+ 1.2 Computed Properties
+ Außerdem soll ein Kurs jeweils eine Note grade haben, sowie eine Eigenschaft passed, die
+ speichert, ob der Kurs bestanden wurde. Bei der Eigenschaft grade soll überprüft werden, ob
+ es sich um eine valide Note (zwischen 1.0 und 6.0) handelt. Dies soll über einen Setter realisiert
+ werden. Ist die Note nicht valide, soll eine Exception geworfen werden. Da zu Beginn eines
+ Kurses noch keine Note gesetzt wird, soll grade mit null initialisiert werden. Beachten Sie dies
+ bei der Wahl des Datentypen.
+ Bei der Eigenschaft passed soll überprüft werden, ob die Note zum Bestehen ausreicht. Ist es
+ eine 4.0 oder besser, so ist die Eigenschaft true, andernfalls false. Dies soll über einen Getter
+ realisiert werden.
+ Testen Sie Ihren Code, indem Sie verschiedene Kurse in einer main Funktion anlegen und diese
+ ausführen. Die letzten beiden Kurse sollten beim Setzen von grade z.B. eine Exception werfen:
+ fun main() {
+ val math = Course("MATH")
+ math.grade = 5.0
+ val english = Course("ENGLISH")
+ english.grade = 3.0
+ val physics = Course("PHYSICS")
+ physics.grade = 0.7 // invalide
+ val chemistry = Course("CHEMISTRY")
+ chemistry.grade = 6.3 // invalide
+ println(math.passed) // false
+ println(english.passed) // true
+ }
+ Wenn die Konstruktion der invaliden Kurse das Programm zuverlässig zum Absturz bringen,
+ können Sie den Code auskommentieren.
+Prof. Dr. Christian Kohls
+ Dominik Deimel, Alexander Dobrynin, Anja Bertels
+ 2 Die Klasse “Student”
+
+ In dieser Aufgabe soll ein Schüler als Klasse mit entsprechenden Eigenschaften und Methoden
+ festgelegt werden.
+ 2.1 Basisstruktur
+ Definieren Sie eine Klasse namens Student. Die Klasse soll die Eigenschaften Name name, Alter
+ age und Kurse courses als Eigenschaften speichern. Der Name soll dabei eine unveränderliche
+ Eigenschaft sein. Das Alter ist veränderlich. courses ist eine Liste, die zunächst leer sein soll.
+ Die Klasse Student sollte wie folgt erzeugt werden können:
+ fun main() {
+ val student1 = Student("Erika Mustermann", 21)
+ val student2 = Student("Max Mustermann", 21)
+ }
+ 2.2 Kurse hinzufügen
+ In dieser Teilaufgabe soll eine Methode implementiert werden, welche neue Kurse zu einem Stu
+denten hinzufügt. Implementieren Sie hierfür die Methode addCourse(course: Course). Diese
+ Methode fügt einen übergebenen Kurs zu der Eigenschaft courses hinzu. Dabei soll zunächst
+ überprüft werden, ob der Kurs schon Teil der Liste ist. Ist dies der Fall, soll eine Exception
+ geworfen werden.
+ Testen Sie die addCourse Methode. Testen Sie auch, ob eine Exception beim mehrfachen Hin
+zufügen von Kursen geworfen wird.
+ fun main() {
+ val math = Course("MATH")
+ val chemistry = Course("CHEMISTRY")
+ val english = Course("ENGLISH")
+ val student1 = Student("Erika Mustermann", 21)
+ val student2 = Student("Max Mustermann", 21)
+ student1.addCourse(math)
+ student1.addCourse(chemistry)
+ student2.addCourse(english)
+ student1.addCourse(math) // invalide
+ }
+ 2.3 Durchschnittliche Note berechnen
+ Implementieren Sie jetzt die Methode averageGrade. Dabei soll für jeden Kurs überprüft wer
+den, welchen Wert seine Eigenschaft grade hat. Aus diesen Werten soll dann der Durchschnitt
+ berechnet und zurückgegeben werden.
+Prof. Dr. Christian Kohls
+ Dominik Deimel, Alexander Dobrynin, Anja Bertels
+ 3 Das Enum “CourseName”
+ Es soll ein bestimmtes Set an Kursen vorgegeben sein.
+ 3.1 Basisstruktur
+ 
+ Implementieren Sie ein Enum namens CourseName, welches die Kurse MATH, CHEMISTRY und
+ ENGLISH kennt.
+ Überprüfen Sie den bereits geschriebenen Code in den beiden Klassen Student und Course.
+ Ersetzen Sie den Datentyp und die Verwendung an den richtigen Stellen, so dass das Enum
+ CourseName verwendet wird.
+ 4 Die Klasse “StudentClass”
+ In dieser Aufgabe soll eine Schulklasse als Klasse festgelegt werden. Eine Schulklasse verwaltet
+ eine Liste von Schülern.
+ 4.1 Basisstruktur
+ Definieren Sie eine Klasse namens StudentClass. Diese Klasse hat die folgenden Eigenschaften:
+ • Eine unveränderliche ID id, die den Namen der Klasse beinhaltet (z.B. “10b”)
+ • Eine Liste students mit Schülern. Diese soll zunächst leer sein.
+ 4.2 Schüler hinzufügen
+ Der StudentClass sollen auch Schüler hinzugefügt werden können. Implementieren Sie die Me
+thode addStudent, die einen student akzeptiert und der Liste students hinzufügt. Dazu soll
+ zunächst überprüft werden, ob der übergebene Schüler bereits Teil der Schulklasse ist. Ist dies
+ der Fall, so soll eine Exception geworfen werden.
+ Testen Sie die addStudent Methode. Testen Sie auch, ob eine Exception beim mehrfachen Hin
+zufügen von einem Schüler geworfen wird.
+ fun main() {
+ val math = Course("MATH")
+ val chemistry = Course("CHEMISTRY")
+ val english = Course("ENGLISH")
+ val student1 = Student("Erika Mustermann", 21)
+ val student2 = Student("Max Mustermann", 21)
+ student1.addCourse(math)
+ student1.addCourse(chemistry)
+ student2.addCourse(english)
+Prof. Dr. Christian Kohls
+ Dominik Deimel, Alexander Dobrynin, Anja Bertels
+ val studentClass = StudentClass("10b")
+ studentClass.addStudent(student1)
+ studentClass.addStudent(student2)
+ studentClass.addStudent(student1) // invalide
+ }
+ 5 Sichtbarkeitsmodifikatoren
+
+ Gehen Sie Ihren geschriebenen Code der letzten Aufgaben durch und überprüfen Sie alle Klas
+sen, Methoden und Eigenschaften auf sinnvolle Sichtbarkeitsmodifikatoren (z.B. private). Fü
+gen Sie diese an den passenden Stellen hinzu
